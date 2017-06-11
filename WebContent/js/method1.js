@@ -9,7 +9,6 @@ function updateNews(nam) {
     for(var i=0;i<title.length;i++){
       title[i].firstChild.nodeValue;
 
-
     }
 
 }// 调用更新标题的方法来更新一个ul里的所有标题
@@ -69,4 +68,42 @@ function subTitle(){
 	}
 	
 }
-	addLoadEvent(subTitle());
+
+//图片轮播
+function picChange(id){
+	var pic=document.getElementById(id);
+	pic.style.position="relative";
+	pic.style.top=0;
+	pic.style.left=0;
+	setInterval("moveElement(0,-400,'pic_show')", 2000);
+	
+}
+
+//移动动画
+function moveElement(x,y,elemID){
+	console.log(elemID);
+	var elem=document.getElementById(elemID);
+	var presentX=parseInt(elem.style.top);
+	var presentY=parseInt(elem.style.left);
+	if (presentX < x) {
+		presentX++;
+		}
+	if (presentX < x) {
+		presentX--;
+	}
+	if (presentY < y) {
+		presentY++;
+	}
+	if (presentY < y) {
+		presentY--;
+	}
+	if(presentX==x&&presentY==y){
+		return true;
+	}
+	elem.style.top=presentX+"px";
+	elem.style.left=presentY+"px";
+	
+	
+}
+//	addLoadEvent(picChange("pic_show"));
+//	picChange("pic_show");

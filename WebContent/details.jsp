@@ -1,3 +1,5 @@
+<%@page import="com.util.pic_bean"%>
+<%@page import="com.dao.picDAO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.util.Date"%>
@@ -65,11 +67,28 @@
 	int id=Integer.parseInt(request.getParameter("id"));
 	newsDAO news=new newsDAO();
 	news_bean n=news.getNews(id);
-	
+	picDAO pic=new picDAO();
+	pic_bean p=pic.getPicByNID(id);
+	String loc1=p.getPic1();
+	String loc2=p.getPic2();
+	String loc3=p.getPic3();
+	String loc4=p.getPic4();
+// 	if(!(loc1 instanceof String)) loc1="#";
+// 	if(!(loc2 instanceof String)) loc2="#";
+// 	if(!(loc3 instanceof String)) loc3="#";
+// 	if(!(loc4 instanceof String)) loc4="#";
 	%>
 	<h2><%=n.getTitle()%></h2>
 	<p>发布人：&nbsp<%=n.getUpload_user() %>;&nbsp&nbsp&nbsp&nbsp发布时间: &nbsp<%=n.getAdd_time() %></p>
-	<p><%=n.getContent() %></p>
+	<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<%=n.getContent() %></p>
+	<div class=picDetail>
+	<img src="<%=p.getPic1() %>" noerror="this.style.display='none'" />
+	<img src="<%=p.getPic2() %>" noerror="this.style.display='none'" />
+	<img src="<%=p.getPic3() %>" noerror="this.style.display='none'" />
+	<img src="<%=p.getPic4() %>" noerror="this.style.display='none'" />
+	
 	</div>
+	</div>
+	
 </body>
 </html>

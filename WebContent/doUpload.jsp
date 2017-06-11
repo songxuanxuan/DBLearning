@@ -1,3 +1,4 @@
+<%@page import="java.io.File"%>
 <%@page import="com.dao.picDAO"%>
 <%@page import="com.util.pic_bean"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -38,6 +39,7 @@
 				n.setTitle(smart.getRequest().getParameter("title"));
 // 				System.out.println(smart.getRequest().getParameter("title"));
 				n.setContent(smart.getRequest().getParameter("content"));
+				//将请求得到的kinds转为int
 				Integer k=smart.getRequest().getParameter("kinds") != null && !smart.getRequest().getParameter("kinds").equals("") ? Integer.parseInt(smart.getRequest().getParameter("kinds")) : null;
 				n.setKinds(k);
 				int nId=news.addNews(n);
@@ -45,25 +47,29 @@
 			
 
 				for(int i=0;i<smart.getFiles().getCount();i++){
-				
+					
+					if(smart.getFiles().getFile(i).getFileName().length()==0)	continue;
+// 					System.out.println("这是第"+i+"  "+ smart.getFiles().getFile(i).getFileName().length());
 					String name=smart.getFiles().getFile(i).getFileName();
 					Random num=new Random(9999);
+					String loc=request.getRealPath("\\");
+					String relative="upload"+File.separator+mytime+num+name;
+				
+					name=loc+File.separator+"upload"+File.separator+mytime+num+name;
 					
-					name="d:\\upload\\"+mytime+num+name;
-// 					System.out.println("测试"+name);
 					smart.getFiles().getFile(i).saveAs(name);
 					switch(i){
 					case 0:
-						p.setPic1(name);
+						p.setPic1(relative);
 						break;
 					case 1:
-						p.setPic2(name);
+						p.setPic2(relative);
 						break;
 					case 2:
-						p.setPic3(name);
+						p.setPic3(relative);
 						break;
 					case 3:
-						p.setPic4(name);
+						p.setPic4(relative);
 						break;
 					}
 				}

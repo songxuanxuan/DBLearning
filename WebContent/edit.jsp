@@ -27,7 +27,10 @@
             <option value="6">大数据资讯</option>
             <option value="7">调研文章</option>
         </select>
-        selectimage: <input type="file"name="myfile"/><br>
+        <br>选择图片: <input type="file"name="myfile"/>
+        <br>选择图片: <input type="file"name="myfile"/>
+        <br>选择图片: <input type="file"name="myfile"/>
+        <br>选择图片: <input type="file"name="myfile"/>
         <input type="submit" value="提交"  />
     </form>
 

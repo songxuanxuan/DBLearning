@@ -1,3 +1,7 @@
+<%@page import="java.io.File"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.dao.picDAO"%>
+<%@page import="com.util.pic_bean"%>
 <%@page import="com.util.Grounp"%>
 <%@page import="com.dao.grounpDAO"%>
 <%@page import="java.util.Date"%>
@@ -27,6 +31,9 @@
     </script>
 </head>
 <body>
+<div class="fly">
+<img alt="666" src="pic/2.gif">
+</div>
 <div class="top">
     <div class="box1">
         <div class="box1_l">
@@ -83,36 +90,43 @@
                 <a href="preNews.jsp" id="morePre">更多</a></h2>
         </div>
         <!--标题1结束-->
-        <div id="myFocus">
-            <div class="pic">
-            <ul>
-                <li><a href="#"><img src="./pic/2.jpg" alt="11"/></a> </li>
-                <li><a href="#"><img src="./pic/1.jpg" alt="222"/></a> </li>
-                <li><a href="#"><img src="./pic/3.jpg" alt="333"/> </a></li>
-                <li><a href="#"><img src="./pic/4.jpg" alt="444"/> </a></li>
-            </ul>
-            </div>
-
-        </div>
-        <!--图片滚动结束-->
-<div class="new1">
 <%
 	newsDAO news=new newsDAO();
 	List<news_bean> list =news.getNewsByKind(1);
 	String[] li=new String[10];
 	int[] n=new int[10];
 	Date[] date2=new Date[10];
-	for(int i=0;i<list.size()%10;i++)
+	picDAO pi=new picDAO();
+	pic_bean p1,p2,p3,p4;
+	int count=list.size()<10?list.size():10;
+	for(int i=0;i<count-1;i++)
 		
 	{
 		if(list.get(list.size()-i-1)==null) continue;
 		li[i]=list.get(list.size()-i-1).getTitle();
 		n[i]=list.get(list.size()-i-1).getId();
 		date2[i]=list.get(list.size()-i-1).getAdd_time();
-		
 	}
-	
+	p1=pi.getPicByNID(n[1]);
+	p2=pi.getPicByNID(n[2]);
+	p3=pi.getPicByNID(n[3]);
+	p4=pi.getPicByNID(n[4]);
 %>
+        <div id="myFocus">
+            <div class="pic">
+            <ul>
+                <li><a href="details.jsp?id=<%=p1.getnId()%>"><img src="<%=p1.getPic1()%>" alt="<%=li[0]%>"/></a> </li>
+                <li><a href="details.jsp?id=<%=p2.getnId()%>"><img src="<%=p2.getPic1()%>" alt="<%=li[1]%>"/></a> </li>
+                <li><a href="details.jsp?id=<%=p3.getnId()%>"><img src="<%=p3.getPic1()%>" alt="<%=li[2]%>"/></a> </li>
+                <li><a href="details.jsp?id=<%=p4.getnId()%>"><img src="<%=p4.getPic1()%>" alt="<%=li[3]%>"/></a> </li>
+                
+            </ul>
+            </div>
+
+        </div>
+        <!--图片滚动结束-->
+<div class="new1">
+
             <ul>
                 <li><a href="details.jsp?id=<%=n[0]  %>"><%=li[0] %></a>  </li>
                 <li><a href="details.jsp?id=<%=n[1]  %>"><%=li[1] %></a>  </li>
@@ -206,8 +220,34 @@
             </ul>
             </div>
         </div>
-        <div class="pic_show">
+        <div id=picFrame>
+        <div id="pic_show">
+           <ul>
+        <%
+        pic_bean p=new pic_bean();
+        picDAO picD=new picDAO();
+        news_bean newsP=new news_bean();
+        String title_p=null;
+       List<pic_bean> pic=picD.getPic();
+       int length=pic.size()<5?pic.size():5;
+       String absol=null;
+       String sym=File.separator;
+       for(int i=0;i<length;i++){
+    	   p=pic.get(i);
+    	   newsP=news.getNews(p.getnId());
+    	   title_p=newsP.getTitle();
+    	   String location=null;
+    	   if(p.getPic1()!=null) {
+    		 location=p.getPic1().replaceAll("\\\\", "/");
+    	   }
+//     	   absol=request.getContextPath()+location;
+//     	   absol=absol.replaceAll("\\\\", "/");
+        %>
+        <li><a href="details.jsp?id=<%=p.getnId()%>"><img src="<%=location%>" alt="<%=title_p %>"/></a></li>
+        <% } %>
+        </ul>
         </div>
+       </div>
         <!--图片展示-->
         <div class="left2_l">
         <div class="title2_l">工作简报</div>        
@@ -284,11 +324,10 @@
     <div class="right" >
         <div class="grounp1">
             <div class="g1_title">
-                <h2>建设工作领导小组</h2>
+                <h2>建设工作领导小组<span><a class="g1_title1_1" href="edit.jsp">编辑</a></span></h2>
+                 
             </div>
-            <div class="g1_title1_1">
-                <a href="edit.jsp">编辑</a>
-            </div>
+               
             <div class="g1_mate">
 <%
 	grounpDAO gro=new grounpDAO();
@@ -309,11 +348,9 @@
         </div>
         <div class="grounp2">
          <div class="g1_title">
-                <h2>通知通告</h2>
+                <h2>通知通告  <a href="edit.jsp" class="g1_title1_1">编辑</a></h2>
             </div>
-            <div class="g1_title1_1">
-                <a href="edit.jsp">编辑</a>
-            </div>
+          
     <div class=news2>
              <ul>
  <%
@@ -348,9 +385,9 @@
          <div class="g1_title">
                 <h2>调研文章</h2>
             </div>
-            <div class="g1_title1_1">
-                <a href="edit.jsp">编辑</a>
-            </div>
+<!--             <div class="g1_title1_1"> -->
+<!--                 <a href="edit.jsp">编辑</a> -->
+<!--             </div> -->
              <div class=news2>
              <ul>
  <%

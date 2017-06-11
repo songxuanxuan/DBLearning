@@ -66,18 +66,18 @@
 <!-- 循环遍历新闻获得标题、接受id以实现跳转； -->
 <%
 	newsDAO news=new newsDAO();
-	List<news_bean> list=news.queryNews();
-	int pages =list.size()/15; 
+	List<news_bean> list=news.getNewsByKind(1);
+	int pages =0; 
 // 	System.out.println(pages);
-	int a=list.size()%15;
-	for(int i=(a-1)+pages;i>=0;i--)
+	int a=list.size()-1-pages;
+	for(int i=a;i>=a-15;i--)
 	{ 	
 		if(list.get(i)==null) continue;
 		news_bean n =list.get(i);
 		String title=n.getTitle();
 		
 %>
-<li class="newsTit"><a href="details.jsp?id=<%=n.getId()%>"><%=title%></a></li>
+<li><a href="details.jsp?id=<%=n.getId()%>"><%=title%></a><span><%=n.getAdd_time() %></span></li>
 <%} %>
 </ul>
 </div>

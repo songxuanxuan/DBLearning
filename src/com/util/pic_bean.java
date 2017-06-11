@@ -1,6 +1,7 @@
 package com.util;
 
 public class pic_bean {
+	private int id;
 	private String pic1;
 	private String pic2;
 	private String pic3;
@@ -35,5 +36,11 @@ public class pic_bean {
 	}
 	public void setnId(int nId) {
 		this.nId = nId;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 }
