@@ -53,6 +53,7 @@
 					String name=smart.getFiles().getFile(i).getFileName();
 					Random num=new Random(9999);
 					String loc=request.getRealPath("\\");
+					System.out.println("位置是"+loc);
 					String relative="upload"+File.separator+mytime+num+name;
 				
 					name=loc+File.separator+"upload"+File.separator+mytime+num+name;

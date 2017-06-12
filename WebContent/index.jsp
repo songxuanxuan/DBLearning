@@ -10,18 +10,18 @@
 <%@page import="com.util.news_bean"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@ page language="java" contentType="text/html; utf-8"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-
-
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>大数据</title>
     <link href="css/box.css" rel="stylesheet" type="text/css" />
-    <script src="js/myfocus-2.0.4.min.js"type="text/javascript"></script>
+    <link href="css/login.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript " src="js/ieBetter.js"></script>
+	<script language="javascript" src="js/jquery.js"></script>
+    <script src="js/myfocus-2.0.4.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         //设置
         myFocus.set({
@@ -31,17 +31,47 @@
     </script>
 </head>
 <body>
-<div class="fly">
-<img alt="666" src="pic/2.gif">
+<div class="login">
+	<button id="closeL">关闭</button>
+	<h2>登录</h2>	
+	<form method="post" action="login.jsp">
+	<label>用户名:</label>
+	<input class="input" type="text" name="username" /><br>
+	<label>密码:&nbsp&nbsp&nbsp&nbsp</label>
+	<input class="input" type="text" name="password" /><br>
+	<input class="button" type="submit" value="登录" />
+	<button class="button" onclick="#" id="regButton" />注册</button>
+	</form>
 </div>
+<div class="register">
+	<button id="closeR">关闭</button>
+	<h2>注册</h2>	
+	<form method="post" action="doRegist.jsp">
+	<label>用户名:</label>
+	<input class="input" type="text" name="username" /><br>
+	<label>密码:&nbsp&nbsp&nbsp&nbsp</label>
+	<input class="input" type="text" name="password" /><br>
+	<label>姓名:</label>
+	<input class="input" type="text" name="name" /><br>
+	<label>注册码:</label>
+	<input class="input" type="text" name="code" /><br>
+	<input class="button" type="submit" value="登录" />
+	<button class="button" onclick="" id="backButton"/>返回</button>
+	</form>
+</div>
+<div class="cover"></div>
+<div class="fly">
+<img alt="666" src="pic/fly1.jpg">
+</div>
+
 <div class="top">
     <div class="box1">
         <div class="box1_l">
-        <img src="" height="100" width="100" style="float: left;margin-left: 30px;margin-top: 20px;" />
+        <img src="pic/LOGO.png" height="200px" width="300px" style="float: left;margin-left: 70px;margin-top: 20px;" />
         </div>
-        <div class="stroke">
-            <h1>云上贵阳&nbsp智慧消防</h1>
-        </div>
+<!--         <div class="stroke"> -->
+<!--             <h1>云上贵阳&nbsp智慧消防</h1> -->
+<!--         </div> -->
     </div>
   
     <!--大报头栏-->
@@ -81,7 +111,6 @@
         </div>
     </div>
 </div>
-<section id="1">
 <div class="content">
     <div class="left">
         <div class="left1">
@@ -107,10 +136,10 @@
 		n[i]=list.get(list.size()-i-1).getId();
 		date2[i]=list.get(list.size()-i-1).getAdd_time();
 	}
-	p1=pi.getPicByNID(n[1]);
-	p2=pi.getPicByNID(n[2]);
-	p3=pi.getPicByNID(n[3]);
-	p4=pi.getPicByNID(n[4]);
+	p1=pi.getPicByNID(n[0]);
+	p2=pi.getPicByNID(n[1]);
+	p3=pi.getPicByNID(n[2]);
+	p4=pi.getPicByNID(n[3]);
 %>
         <div id="myFocus">
             <div class="pic">
@@ -324,10 +353,9 @@
     <div class="right" >
         <div class="grounp1">
             <div class="g1_title">
-                <h2>建设工作领导小组<span><a class="g1_title1_1" href="edit.jsp">编辑</a></span></h2>
-                 
+                <h2>建设工作领导小组<span><a id="loginButton" class="g1_title1_1" href="details.jsp">编辑</a></span></h2>                
             </div>
-               
+              
             <div class="g1_mate">
 <%
 	grounpDAO gro=new grounpDAO();
@@ -422,49 +450,6 @@
 
 		</div>
     </div>
-
-
-</section>
-<!-- <section id="2"> -->
-<!-- <div class="newslist"> -->
-<!-- <ul> -->
-<!-- <!-- 循环遍历新闻获得标题、接受id以实现跳转； --> -->
-<%-- <% --%>
-// 	newsDAO news2=new newsDAO();
-// 	List<news_bean> list2=news.queryNews();
-// 	int pages =list.size()/15; 
-// // 	System.out.println(pages);
-// 	int a=list.size()%15;
-// 	for(int i=(a-1)+pages;i>=0;i--)
-// 	{ 	
-// 		if(list.get(i)==null) continue;
-// 		news_bean n2 =list.get(i);
-// 		String title=n2.getTitle();
-		
-<%-- %> --%>
-<%-- <li class="newsTit"><a href="details.jsp?id=<%=n2.getId()%>"><%=title%></a></li> --%>
-<%-- <%} %> --%>
-<!-- </ul> -->
-<!-- </div> -->
-<!-- </section> -->
-<!-- <section id="3"> -->
-<!-- 33333 -->
-<!-- </section> -->
-<!-- <section id="4"> -->
-<!-- 44444 -->
-<!-- </section> -->
-<!-- <section id="5"> -->
-
-<!-- </section> -->
-<!-- <section id="6"> -->
-
-<!-- </section> -->
-<!-- <section id="7"> -->
-
-<!-- </section> -->
-<!-- <section id="8"> -->
-
-<!-- </section> -->
 <div class="bottom">
     <div class="mynav">
         <div>
@@ -482,7 +467,7 @@
         <p>版权所有：贵阳消防支队</p>
     </div>
 </div>
-    <script src="js/method1.js" type="text/javascript"></script>
-<!-- <script src="js/sectionShow.js" type="text/javascript"></script> -->
+<!--     <script src="js/method1.js" type="text/javascript"></script> -->
+	<script type="text/javascript" src="js/action.js"></script>
 </body>
 </html>

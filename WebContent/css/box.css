@@ -37,7 +37,7 @@ body{
 }
 .stroke h1{
     font-size: 60px;
-    font-family: "Adobe 宋体 Std L";
+    font-family: "Adobe 瀹嬩綋 Std L";
     color: blue;
     text-shadow: #d2d6d2;
     line-height: 250px;
@@ -53,6 +53,7 @@ body{
     position:absolute;
     box-shadow: 5px 5px 5px #888888;
     z-index:5;
+    
 
 }
 .box2 .ll{
@@ -75,9 +76,9 @@ body{
     font-size: 15px;
     list-style: none;
     transition: width 2s;
-/* -moz-transition: width 2s,-moz-transform 2s;	Firefox 4 */
-/* -webkit-transition: width ,-moz-transform 2s;	Safari 和 Chrome */
-/* -o-transition: width 2s,-moz-transform 2s;	Opera */
+-moz-transition: width 2s;	
+-webkit-transition: width 2s;	
+-o-transition: width 2s;	
 }
 .box2 li:hover{
 	width:100px;
@@ -232,7 +233,7 @@ body{
     top:0;
     margin-bottom:0;
     
-
+	
 }
 .grounp2{
     width:100%;
@@ -454,18 +455,19 @@ body{
 }
 .fly{
 	position:fixed;
-	top:300px;
-	left:50px;
+	top:200px;
+	left:20px;
 	box-shadow:5px 5px 5px  #888;
+	z-index:5;
 	
 	
 }
 /* .fly img:{ */
 /* 	width:350px; */
 /* 	transform:ratate(10deg); */
-}
+/* } */
 .fly img{
-	width:300px;
-	height:400px;
+	width:400px;
+	height:700px;
 /* 	transition:width 2s transform 2s; */
 }
