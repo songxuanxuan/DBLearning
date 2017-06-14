@@ -1,4 +1,4 @@
-//	var $ = jQuery.noConflict(true);
+
 	var islogin=false;
 function closeLogin(){
 	$("#closeL").click(function(){
@@ -19,7 +19,6 @@ function openLogin(){
 	$("#loginButton").click(function(){
 		$(".login").fadeIn(800,function(islogin){
 			islogin=(islogin==true?false:true);
-			
 		});
 		$(".cover").fadeIn(800);
 		
@@ -66,21 +65,152 @@ function backLogin(){
 		}
 	);	
 }
-function enlarge(elem){
-	$(elem).click(function(){
-		$(this).addClass("enlarge");
-	}		
-	);
+function checkValid1(){
+	checkValid(".register input");
+	var $exist=$("input:eq(0)");
+	//ajax判断用户是否存在
+	$exist.blur(function(){		
+		$.post("isLogin",{
+			"username":$(this).val()
+		},
+		function(data){
+			if(data.indexOf("false")!=-1){
+			$("#registV").replaceWith("<P id='registV'>用户不存在</P>");
+			$("input:eq(0)").css({
+				"border":"1px solid red",
+				"color":"red"
+				});
+			return false;
+			}
+		});
+	});
+}
+function checkValid2(){
+	checkValid(".login input");
+	var $notexi=$("input:eq(3)");
+	var $confirm=$("input:eq(5)");
+	//判断密码确认
+	$confirm.blur(function(){
+		if($(this).val()!=$("input:eq(4)").val())
+			{
+			$("#registR").replaceWith("<P id='registR'>密码不统一</P>");
+			$(this).css({
+				"border":"1px solid red",
+				"color":"red"
+				});
+			return false;
+			}
+	});
+	//ajax判断注册时的用户
+	$notexi.blur(function(){
+		$.post("isLogin",{
+			"username":$(this).val()
+		},
+		function(data){
+			if(data.indexOf("false")==-1){
+			$("#registR").replaceWith("<P id='registR'>用户已存在</P>");
+			$("input:eq(3)").css({
+				"border":"1px solid red",
+				"color":"red"
+				});
+			}
+			else
+				{
+				$("#registR").replaceWith("<P id='registR'>用户名可以使用</P>");
+				}
+			return false;
+		});	
+	});
+	if($("#code").val()!=="19119") {
+		$("#code").val("注册码不对");
+		return false;
+	}
 	
 }
+	//输入框动作
+function checkValid(elem){
+	//点击输入的效果
+	$(elem).not(".button").focus(function(){
+		$(this).val(null);
+	});
+	var $inp=$(elem).not(".button");
+	//遍历检查输入长度是否合法
+	$inp.each(function(index,domEle){
+	$(domEle).blur(function(){
+	if(domEle.value.length<3||domEle.value.length>15)
+		{
+		$("#registR").replaceWith("<P id='registR'>长度不正确</P>");
+		$("#registV").replaceWith("<P id='registV'>长度不正确</P>");
+		$(domEle).css({
+			"border":"1px solid red",
+			"color":"red"
+			});
+		}
+		return false;
+		});
+	});
+}
+	//判断图片是否存在
+	function fixPic(){
+		$("#myFocus img").each(function(index,elem){
+			if($(elem).attr("src")=="null"){
+				$(elem).attr("src","pic/invalid.jpg");
+			}
+		});
+		
+		
+		
+	}
+	function valid(){
+		var len=$("input:lt(2)").val().length;
+		var vali=checkValid1();
+		console.log(vali);
+		if(len<2||vali) return false;			
+	}
+	//点击登录
+	function clickLogin(){
+		$("#loginB").click(function(){
+			$.post("isCorrect",{
+				"username":$("input:eq(0)").val(),
+				"password":$("input:eq(1)").val()
+			},
+			function(data){
+				console.log(data);
+				if(data.indexOf("true")!=-1){	
+					$(window).attr('location','edit.jsp');
+				}
+			});
+			
+			
+		});
+		
+	}
+	function clickReg(){
+		$("#registB").click(function(){
+		var len=$(".register input:lt(4)").val().length;
+		var is=$(".register input:eq(2)").val()==$(".register input:lt(1)").val();
+		if(is&&len>1&&$(".register input:eq(4)").val()==19119){
+			$.post("doRegist.jsp",{
+				"username":$(".register input:eq(0)").val(),
+				"password":$(".register input:eq(1)").val(),
+				"truename":$(".register input:eq(3)").val()
+			},function(){
+				$(window).attr('location','edit.jsp');
+			});
+		}
+		});
+	}
 	runJS(function(){
+		fixPic();
 		closeLogin();
 		openLogin();
 		openRegister();
 		closeRegister();
 		backLogin();
-		enlarge(".fly img");
-		clickCover();
+		checkValid1();
+		checkValid2();
+		clickLogin();
+		clickReg();
 		
 	}
 	);

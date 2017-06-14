@@ -34,28 +34,34 @@
 <div class="login">
 	<button id="closeL">关闭</button>
 	<h2>登录</h2>	
-	<form method="post" action="login.jsp">
+	<p id="registV"></p>
+	<form method="post" action="isCorrect" onsubmit="return checkValid1()">
+	<p id="registV">请输入3个以上</p>
 	<label>用户名:</label>
-	<input class="input" type="text" name="username" /><br>
+	<input class="input" type="text" name="username" value=""/><br>
 	<label>密码:&nbsp&nbsp&nbsp&nbsp</label>
-	<input class="input" type="text" name="password" /><br>
-	<input class="button" type="submit" value="登录" />
-	<button class="button" onclick="#" id="regButton" />注册</button>
+	<input class="input" type="text" name="password" value=""/><br>
+	<input  id="loginB" class="button" type="button" value="登录"/>
+	<button class="button" onclick="" id="regButton" />注册</button>
 	</form>
 </div>
 <div class="register">
 	<button id="closeR">关闭</button>
 	<h2>注册</h2>	
-	<form method="post" action="doRegist.jsp">
+	
+	<form method="post" action="" onsubmit="return checkValid2()">
+	<p id="registR">请输入3个以上</p>
 	<label>用户名:</label>
-	<input class="input" type="text" name="username" /><br>
+	<input class="input" type="text" name="username" value="" /><br>
 	<label>密码:&nbsp&nbsp&nbsp&nbsp</label>
-	<input class="input" type="text" name="password" /><br>
+	<input class="input" type="text" name="password" value="" /><br>
+	<label>确认密码:&nbsp&nbsp</label>
+	<input class="input" type="text" name="password1" value="" /><br>
 	<label>姓名:</label>
-	<input class="input" type="text" name="name" /><br>
+	<input class="input" type="text" name="name" value="" /><br>
 	<label>注册码:</label>
-	<input class="input" type="text" name="code" /><br>
-	<input class="button" type="submit" value="登录" />
+	<input class="input" type="text" name="code" id="code"/><br>
+	<button id="registB" class="button" type="submit" onclick="">注册</button>
 	<button class="button" onclick="" id="backButton"/>返回</button>
 	</form>
 </div>
@@ -73,12 +79,11 @@
 <!--             <h1>云上贵阳&nbsp智慧消防</h1> -->
 <!--         </div> -->
     </div>
-  
     <!--大报头栏-->
     <div class="box2">
         <!--<ul style="text-align: left">-->
             <li class="ll" ><a  href="index.jsp">首页</a> </li>
-            <li ><a  href=" preNews.jsp">大数据要问</a> </li>
+            <li ><a  href="preNews.jsp?">大数据要问</a> </li>
             <li ><a href=" fresh.jsp">大数据动态</a> </li>
             <li ><a  href=" note.jsp">通知通告</a> </li>
             <li ><a  href=" knowleage.jsp">大数据知识</a> </li>
@@ -103,9 +108,9 @@
                 </li>
         </div>
         <div class="box3_r">
-            <form action=""method="post">
-                <input type="text" />
-                <input type="button" value="搜索" onclick="" />
+            <form action="search.jsp" method="post" enctype="application/x-www-form-urlencoded">
+                <input name="key" type="text" />
+                <input type="submit" value="搜索" onclick="" />
             </form>
 
         </div>
@@ -353,7 +358,7 @@
     <div class="right" >
         <div class="grounp1">
             <div class="g1_title">
-                <h2>建设工作领导小组<span><a id="loginButton" class="g1_title1_1" href="details.jsp">编辑</a></span></h2>                
+                <h2>建设工作领导小组<span><a id="loginButton" class="g1_title1_1" href="#">编辑</a></span></h2>                
             </div>
               
             <div class="g1_mate">
@@ -361,7 +366,6 @@
 	grounpDAO gro=new grounpDAO();
 	Grounp grounp=gro.showGrounp();
 %>
-
 	<ul>
 	<li>组&nbsp长:<%=grounp.getLeader() %></li>
 	<li>副组长:<%=grounp.getDeputy() %></li>
@@ -421,7 +425,6 @@
  <%
 	List<news_bean> list_arti=news.getNewsByKind(7);
 	int pages_arti =list_arti.size()/5; 
-// 	System.out.println(pages);
 	int g=list_arti.size();
 	int n4=g-5>0?g-5:0;
 	for(int i=(g-1);i>=n4;i--)

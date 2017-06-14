@@ -2,23 +2,44 @@ body{
     background-color: #ebefeb;
 }
 .addNews{
-    height: 800px;
+    height: auto;
     width: 1000px;
     border:1px cornflowerblue solid ;
     margin: 10px auto;
     text-align: center;
 }
-.addNews input ,textarea{
-    display: block;
+.addNews input ,textarea,.addGrounp input{
     width: 700px;
     height: 30px;
-    margin-left: 150px;
+    margin-left: 100px;
     margin-top: 10px;
     margin-bottom: 5px;
-
-
 }
 .addNews .content{
     height: 500px;
 
+}
+.switch{
+	top:200px;
+	left:200px;
+	width:100px;
+	position:absolute;
+}
+.switch button{
+	margin-top:30px;
+	float:right;
+	height:40px;
+	width:100px;
+}
+.addGrounp{
+	height: 800px;
+    width: 1000px;
+    border:1px cornflowerblue solid ;
+    position:absolute;
+    top:50px;
+    left:450px;
+    display:none;
+}
+.addGrounp h2{
+	text-align: center;
 }

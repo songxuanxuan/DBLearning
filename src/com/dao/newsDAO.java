@@ -102,6 +102,27 @@ public class newsDAO {
 		}
 		return n1;
 	}
+	public List<news_bean> getNewsByKindD(int n) throws Exception
+	{
+		List<news_bean> result=new ArrayList<>();
+		Connection con=DBHelper.getConnection();
+		String sql=" "+" select * from news "+" where kind=? order by id desc";
+		PreparedStatement psmt=con.prepareStatement(sql);
+		psmt.setInt(1, n);
+		ResultSet rs=psmt.executeQuery();
+		news_bean n1=null;
+		while(rs.next()){
+			n1=new news_bean();
+			n1.setId(rs.getInt("id"));
+			n1.setTitle(rs.getString("title"));
+			n1.setContent(rs.getString("content"));
+			n1.setAdd_time(rs.getDate("time"));
+			n1.setUpload_user("upload_user");
+			result.add(n1);
+		}
+		return result;
+		
+	}
 	public List<news_bean> getNewsByKind(int n) throws Exception
 	{
 		List<news_bean> result=new ArrayList<>();
@@ -129,6 +150,8 @@ public class newsDAO {
 		Connection con=DBHelper.getConnection();
 		String sql=" "+" select * from news "+" where title like ?";				
 		PreparedStatement psmt=con.prepareStatement(sql);
+		n='%'+n+'%';
+//		System.out.println(n);
 		psmt.setString(1, n);
 		ResultSet rs=psmt.executeQuery(); 
 		news_bean n1=null;

@@ -80,7 +80,8 @@
 			catch(Exception e){ 
 			} 
 			pic.addpic(p);
+			System.out.println("cesjuo");
 		 %>
-		<a href="upload.jsp">返回</a>
+		<a href="index.jsp">返回</a>
 	</body>
 </html>

@@ -273,6 +273,7 @@ body{
     height: 200px;
     /*background-color: #0099ff;*/
     margin:0 auto;
+    display:block;
 
 }
 .mynav {
@@ -437,18 +438,23 @@ body{
 .newslist{
 	margin:20px auto;
 	width:1000px;
+	display:table;
 }
 .newslist li{
 	list-style-type:none;
-	margin:30px 40px;
+	margin:25px 40px;
 }
 .newslist li a{
 	text-decoration: none;
 	color:black;
+	tansition:font-size 2s,color 2s;
+	-moz-transition: font-size 2s,color 2s;
+    -webkit-transition:font-size 2s,color 2s;
+    -o-transition:font-size 2s,color 2s;
 }
 .newslist li a:hover{
 	color:orange;
-	font-size:40px;
+	font-size:30px;
 }
 .newslist li span{
 	float:right;
@@ -470,4 +476,18 @@ body{
 	width:400px;
 	height:700px;
 /* 	transition:width 2s transform 2s; */
+}
+.page{
+	padding-left:200px;
+}
+.page li{
+	float:left;
+	margin:10px;
+	
+}
+.login p,.register p{
+	height:30px;
+	wight:50px;
+	margin:0;
+	padding:0;
 }

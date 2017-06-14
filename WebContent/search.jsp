@@ -65,21 +65,13 @@
 <ul>
 <!-- 循环遍历新闻获得标题、接受id以实现跳转； -->
 <%	
-	int pages=0;
-	String pa=request.getParameter("pages");
-	System.out.println(pages);
-try {
-    pages= Integer.valueOf(pa).intValue();
-    System.out.println(pages);
-} catch (NumberFormatException e) {
-    e.printStackTrace();
-}
-// 	pages= Integer.parseInt(pages);
+	request.setCharacterEncoding("utf-8");
+	String key=request.getParameter("key");
+	System.out.println(key);
 	newsDAO news=new newsDAO();
-	List<news_bean> list=news.getNewsByKindD(1);
-	int a=pages*16;
+	List<news_bean> list=news.getNewsByTitle(key);
 	
-	for(int i=a;i<list.size();i++)
+	for(int i=0;i<list.size();i++)
 	{ 	
 		if(list.get(i)==null) continue;
 		news_bean n =list.get(i);
@@ -88,62 +80,7 @@ try {
 <li class="cut"><a href="details.jsp?id=<%=n.getId()%>"><%=title%></a><span><%=n.getAdd_time() %></span></li>
 <%} %>
 </ul>
-<div  class="page">
-	<ul>
-	<li><button id="prev">上一页</button></li>
-	<li><button id="next">下一页</button></li>
-	<li>页码：<span></span></li>
-	
-	<li><input id="jumpNum" method="get" action="" /><button id="jump">跳转</button></li>
-	</ul>
-</div>
-</div>
-	<script language="javascript" src="js/jquery.js"></script>
-<script type="text/javascript">
-	var pages=0;
-	$("document").ready(function(){
-		page();		
-	});
-	function page(){
-		$(".cut:lt(0)").hide();
-		$(".cut:gt(20)").hide();
-		$("span:last").replaceWith("<span>"+(pages+1)+"</span>");
-		var t=pages*20;
-		$("#prev").click(function(){
-			if(pages>0){
-				$(".cut:lt("+t+"),.cut:gt("+(t+20)+")").show();
-				pages--;
-				$("span:last").replaceWith("<span>"+(pages+1)+"</span>");
-				t=20*pages;	
-				$(".cut:lt("+t+")").hide();
-				$(".cut:gt("+(t+20)+")").hide();	
-			}	
-		});
-		$("#jump").click(function(){
-			$(".cut").show();
-			var p=$("#jumpNum").val();
-			console.log(p.length);
-			p=Number(p)-1;
-			$(".cut:lt("+p*20+"),.cut:gt("+(p*20+20)+")").hide();
-		});
-		$("#next").click(function(){
-			if(pages<$(".cut").size()/20){
-				$(".cut:lt("+t+"),.cut:gt("+(t+20)+")").show();
-				pages++;
-				$("span:last").replaceWith("<span>"+(pages+1)+"</span>");
-				t=20*pages;
-				$(".cut:lt("+t+")").hide();
-				$(".cut:gt("+(t+20)+")").hide();
-			
-			}
-		});
-	}
-	
-	
-</script>
-<%
-	
-%>
+</div>	
 <div class="bottom">
     <div class="mynav">
         <div>
