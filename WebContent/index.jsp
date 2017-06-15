@@ -75,9 +75,6 @@
         <div class="box1_l">
         <img src="pic/LOGO.png" height="200px" width="300px" style="float: left;margin-left: 70px;margin-top: 20px;" />
         </div>
-<!--         <div class="stroke"> -->
-<!--             <h1>云上贵阳&nbsp智慧消防</h1> -->
-<!--         </div> -->
     </div>
     <!--大报头栏-->
     <div class="box2">
@@ -149,7 +146,7 @@
         <div id="myFocus">
             <div class="pic">
             <ul>
-                <li><a href="details.jsp?id=<%=p1.getnId()%>"><img src="<%=p1.getPic1()%>" alt="<%=li[0]%>"/></a> </li>
+                <li><a href="details.jsp?id=<%=p1.getnId()%>"><img src="${pageContext.servletContext.contextPath}<%=p1.getPic1()%>" alt="<%=li[0]%>"/></a> </li>
                 <li><a href="details.jsp?id=<%=p2.getnId()%>"><img src="<%=p2.getPic1()%>" alt="<%=li[1]%>"/></a> </li>
                 <li><a href="details.jsp?id=<%=p3.getnId()%>"><img src="<%=p3.getPic1()%>" alt="<%=li[2]%>"/></a> </li>
                 <li><a href="details.jsp?id=<%=p4.getnId()%>"><img src="<%=p4.getPic1()%>" alt="<%=li[3]%>"/></a> </li>
@@ -380,7 +377,7 @@
         </div>
         <div class="grounp2">
          <div class="g1_title">
-                <h2>通知通告  <a href="edit.jsp" class="g1_title1_1">编辑</a></h2>
+                <h2>通知通告  </h2>
             </div>
           
     <div class=news2>
@@ -454,22 +451,127 @@
 		</div>
     </div>
 <div class="bottom">
-    <div class="mynav">
-        <div>
-            <ul>
-                <li><a href="#">加入收藏</a></li>
-                <li><a href="#">加入收藏</a></li>
-                <li><a href="#">加入收藏</a></li>
-                <li><a href="#">加入收藏</a></li>
-                <li><a href="#">加入收藏</a></li>
+		<div class="mynav">
+			<table border="0" cellspacing="0" cellpadding="0" width="1000"
+				bgcolor="#ffffff" align="center">
+				<tbody>
+					<tr>
+						<td bgcolor="#ffffff" valign="top" align="middle">
+							<table style="BORDER-TOP: #fff 6px solid" border="0"
+								cellspacing="0" cellpadding="0" width="100%">
+								<tbody>
+									<tr>
+										<td
+											style="BORDER-BOTTOM: #e0e0e0 1px solid; BORDER-LEFT: #e0e0e0 1px solid; PADDING-BOTTOM: 4px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; BORDER-TOP: #e0e0e0 1px solid; BORDER-RIGHT: #e0e0e0 1px solid; PADDING-TOP: 4px"
+											height="80" align="middle">
+											<table border="0" cellspacing="2" cellpadding="0"
+												width="100%">
+												<tbody>
+													<tr>
+														<td align="middle" height="41"><a
+															href="http://10.160.129.5:83/" title="消防部队政工网"
+															target="_blank" border="0"><font color="#000000"
+																size="3"><img
+																	src="picOut/1.gif"
+																	width="131" height="41" border="0"></font></a></td>
+														<td align="middle" height="41"><a
+															href="http://hx.xc.ga/" title="和谐警民关系网" target="_blank"
+															border="0"><font color="#000000" size="3"><img
+																	src="picOut/2.gif"
+																	width="131" height="41" border="0"></font></a></td>
+														<td align="middle" height="41"><a
+															href="http://hj.xc.ga/" title="好警网" target="_blank"
+															border="0"><font color="#000000" size="3"><img
+																	src="picOut/3.gif"
+																	width="131" height="41" border="0"></font></a></td>
+														<td align="middle" height="41"><a
+															href="http://10.2.60.3:86/" title="中国消防产品信息网"
+															target="_blank" border="0"><font color="#000000"
+																size="3"><img
+																	src="picOut/4.gif"
+																	width="131" height="41" border="0"></font></a></td>
+														<td align="middle" height="41"><a
+															href="http://10.160.129.5/" title="消防部队纪检网"
+															target="_blank" border="0"><font color="#000000"
+																size="3"><img
+																	src="picOut/5.gif"
+																	width="131" height="41" border="0"></font></a></td>
+														<td align="middle" height="41"><a
+															href="http://10.160.129.5:84/web71" title="消防部队审计网"
+															target="_blank" border="0"><font color="#000000"
+																size="3"><img
+																	src="picOut/6.gif"
+																	width="131" height="41" border="0"></font></a></td>
+														<td align="middle" height="41"><a
+															href="http://10.2.60.1/systemlink.htm" title="岗位考试"
+															target="_blank" border="0"><font color="#000000"
+																size="3"><img
+																	src="picOut/7.gif"
+																	width="131" height="41" border="0"></font></a></td>
+													</tr>
+													<tr>
+														<td align="middle" height="41"><a
+															href="http://10.2.60.88/zl" title="火灾隐患" target="_blank"
+															border="0"><font color="#000000" size="3"><img
+																	src="picOut/8.gif"
+																	width="131" height="41" border="0"></font></a></td>
+														<td align="middle" height="41"><a
+															href="http://10.2.60.15:92/" title="危旧营房" target="_blank"
+															border="0"><font color="#000000" size="3"><img
+																	src="picOut/9.gif"
+																	width="131" height="41" border="0"></font></a></td>
+														<td align="middle" height="41"><a
+															href="http://10.2.60.188/xiaofang/(S(uxd0d2jri3avjv20jdyhmqyu))/login.aspx"
+															title="营房信息管理" target="_blank" border="0"><font
+																color="#000000" size="3"><img
+																	src="picOut/10.gif"
+																	width="131" height="41" border="0"></font></a></td>
+														<td align="middle" height="41"><a
+															href="http://10.2.60.188:1198/" title="被装管理"
+															target="_blank" border="0"><font color="#000000"
+																size="3"><img
+																	src="picOut/11.gif"
+																	width="131" height="41" border="0"></font></a></td>
+														<td align="middle" height="41"><a
+															href="http://10.2.60.17:8080/equipment" title="装备管理"
+															target="_blank" border="0"><font color="#000000"
+																size="3"><img
+																	src="picOut/12.gif"
+																	width="131" height="41" border="0"></font></a></td>
+														<td align="middle" height="41"><a
+															href="http://10.160.129.20:100/FAMWEB/" title="部队资产"
+															target="_blank" border="0"><font color="#000000"
+																size="3"><img
+																	src="picOut/13.gif"
+																	width="131" height="41" border="0"></font></a></td>
+														<td align="middle" height="41"><a
+															href="http://10.2.60.7/kns50/" title="CNK"
+															target="_blank" border="0"><font color="#000000"
+																size="3"><img
+																	src="picOut/14.gif"
+																	width="131" height="41" border="0"></font></a></td>
+													</tr>
 
-            </ul>
-        </div>
-    </div>
-    <div class="copyright">
+												</tbody>
+											</table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+
+						</td>
+						<td width="0"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+</div>
+<div class="copyright">
+		<img alt="aaa" src="">
         <p>版权所有：贵阳消防支队</p>
     </div>
-</div>
 <!--     <script src="js/method1.js" type="text/javascript"></script> -->
 	<script type="text/javascript" src="js/action.js"></script>
 </body>

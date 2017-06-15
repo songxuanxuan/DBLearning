@@ -164,7 +164,6 @@ function checkValid(elem){
 	function valid(){
 		var len=$("input:lt(2)").val().length;
 		var vali=checkValid1();
-		console.log(vali);
 		if(len<2||vali) return false;			
 	}
 	//点击登录
@@ -175,7 +174,6 @@ function checkValid(elem){
 				"password":$("input:eq(1)").val()
 			},
 			function(data){
-				console.log(data);
 				if(data.indexOf("true")!=-1){	
 					$(window).attr('location','edit.jsp');
 				}
@@ -200,6 +198,34 @@ function checkValid(elem){
 		}
 		});
 	}
+	function clickFly(){
+		$(".fly img").click(function(){
+			if($(this).css("width").indexOf("600px")==-1){
+			$(this).css({
+				"width":"600px",
+			"height":"800px"			
+			});
+			$(".fly").css({
+				"left":"500px",
+				"top":"50px"
+			});
+			$(".cover").css("display","block");
+			}
+			else
+				{
+				$(this).css({
+					"width":"150px",
+				"height":"300px",
+				
+				});
+				$(".fly").css({
+					"left":"20px",
+//					"position":"fixed"
+				});
+				$(".cover").css("display","none");
+				}
+		});
+	}
 	runJS(function(){
 		fixPic();
 		closeLogin();
@@ -211,6 +237,7 @@ function checkValid(elem){
 		checkValid2();
 		clickLogin();
 		clickReg();
+		clickFly();
 		
 	}
 	);
