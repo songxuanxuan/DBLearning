@@ -146,7 +146,7 @@
         <div id="myFocus">
             <div class="pic">
             <ul>
-                <li><a href="details.jsp?id=<%=p1.getnId()%>"><img src="${pageContext.servletContext.contextPath}<%=p1.getPic1()%>" alt="<%=li[0]%>"/></a> </li>
+                <li><a href="details.jsp?id=<%=p1.getnId()%>"><img src="<%=p1.getPic1()%>" alt="<%=li[0]%>"/></a> </li>
                 <li><a href="details.jsp?id=<%=p2.getnId()%>"><img src="<%=p2.getPic1()%>" alt="<%=li[1]%>"/></a> </li>
                 <li><a href="details.jsp?id=<%=p3.getnId()%>"><img src="<%=p3.getPic1()%>" alt="<%=li[2]%>"/></a> </li>
                 <li><a href="details.jsp?id=<%=p4.getnId()%>"><img src="<%=p4.getPic1()%>" alt="<%=li[3]%>"/></a> </li>
@@ -569,7 +569,6 @@
 		
 </div>
 <div class="copyright">
-		<img alt="aaa" src="">
         <p>版权所有：贵阳消防支队</p>
     </div>
 <!--     <script src="js/method1.js" type="text/javascript"></script> -->
